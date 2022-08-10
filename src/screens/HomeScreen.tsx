@@ -11,6 +11,8 @@ import styles from '../themes/styles';
 import { HorizontalSlider } from '../components/HorizontalSlider';
 import { BackgroundGradient } from '../components/BackgroundGradient';
 
+import ImageColors from 'react-native-image-colors';
+import { getCardColors } from '../helpers/getCardColors';
 const { width: windowWidth } = Dimensions.get('window');
 
 export const HomeScreen = () => {
@@ -18,6 +20,13 @@ export const HomeScreen = () => {
 
     const { top } = useSafeAreaInsets();
 
+    const getPosterColors = async (index: number) => {
+        const movie = nowPlaying[index];
+        const uri = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+        const [primary, secondary] = await getCardColors(uri);
+
+        console.log(primary, secondary);
+    };
     if (isLoad) {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center' }}>
@@ -38,6 +47,7 @@ export const HomeScreen = () => {
                             sliderWidth={windowWidth}
                             itemWidth={300}
                             inactiveSlideOpacity={0.9}
+                            onSnapToItem={index => getPosterColors(index)}
                         />
                     </View>
                     {/* Top Movies  */}
