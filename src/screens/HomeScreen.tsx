@@ -9,6 +9,7 @@ import { Dimensions } from 'react-native';
 import styles from '../themes/styles';
 
 import { HorizontalSlider } from '../components/HorizontalSlider';
+import { BackgroundGradient } from '../components/BackgroundGradient';
 
 const { width: windowWidth } = Dimensions.get('window');
 
@@ -26,23 +27,25 @@ export const HomeScreen = () => {
     }
 
     return (
-        <ScrollView>
-            <View style={{ marginTop: top + 20 }}>
-                {/* Carousel Principal */}
-                <View style={styles.content_carousel}>
-                    <Carousel
-                        data={nowPlaying}
-                        renderItem={({ item }: any) => <CardMovie movie={item} />}
-                        sliderWidth={windowWidth}
-                        itemWidth={300}
-                        inactiveSlideOpacity={0.9}
-                    />
+        <BackgroundGradient>
+            <ScrollView>
+                <View style={{ marginTop: top + 20 }}>
+                    {/* Carousel Principal */}
+                    <View style={styles.content_carousel}>
+                        <Carousel
+                            data={nowPlaying}
+                            renderItem={({ item }: any) => <CardMovie movie={item} />}
+                            sliderWidth={windowWidth}
+                            itemWidth={300}
+                            inactiveSlideOpacity={0.9}
+                        />
+                    </View>
+                    {/* Top Movies  */}
+                    <HorizontalSlider title="Popular Movies" movies={popular} />
+                    <HorizontalSlider title="Top Rated" movies={topRated} />
+                    <HorizontalSlider title="Upcoming" movies={upcoming} />
                 </View>
-                {/* Top Movies  */}
-                <HorizontalSlider title="Popular Movies" movies={popular} />
-                <HorizontalSlider title="Top Rated" movies={topRated} />
-                <HorizontalSlider title="Upcoming" movies={upcoming} />
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </BackgroundGradient>
     );
 };
