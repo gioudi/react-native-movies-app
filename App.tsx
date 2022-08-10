@@ -23,12 +23,14 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { Navigation } from './src/navigation/Navigation';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { FadeScreen } from './src/screens/FadeScreen';
 
 const App = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
         <Navigation />
+        {/*  <FadeScreen /> */}
       </NavigationContainer>
     </GestureHandlerRootView>
   );
