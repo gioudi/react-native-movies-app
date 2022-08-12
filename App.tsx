@@ -20,16 +20,23 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { Navigation } from './src/navigation/Navigation';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { FadeScreen } from './src/screens/FadeScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import {Navigation} from './src/navigation/Navigation';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {FadeScreen} from './src/screens/FadeScreen';
+import {GradientProvider} from './src/context/GradientContext';
+
+const AppState = ({children}: any) => {
+  return <GradientProvider>{children}</GradientProvider>;
+};
 
 const App = () => {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={{flex: 1}}>
       <NavigationContainer>
-        <Navigation />
+        <AppState>
+          <Navigation />
+        </AppState>
         {/*  <FadeScreen /> */}
       </NavigationContainer>
     </GestureHandlerRootView>
