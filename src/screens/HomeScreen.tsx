@@ -1,4 +1,3 @@
-import {useNavigation} from '@react-navigation/core';
 import React, {useContext, useEffect} from 'react';
 import {Text, View, Button, ActivityIndicator, ScrollView} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
@@ -28,6 +27,13 @@ export const HomeScreen = () => {
 
     setMainColors({primary, secondary});
   };
+
+  useEffect(() => {
+    if (nowPlaying.length) {
+      getPosterColors(0);
+    }
+  }, [nowPlaying]);
+
   if (isLoad) {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignContent: 'center'}}>
