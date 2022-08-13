@@ -28,6 +28,13 @@ export const HomeScreen = () => {
 
     setMainColors({primary, secondary});
   };
+
+  useEffect(() => {
+    if (nowPlaying.length) {
+      getPosterColors(0);
+    }
+  }, [nowPlaying]);
+
   if (isLoad) {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignContent: 'center'}}>
