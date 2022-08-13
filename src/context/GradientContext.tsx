@@ -8,12 +8,12 @@ interface ImageColors {
 
 interface ContextProps {
   colors: ImageColors;
-  prevousColors: ImageColors;
+  previousColors: ImageColors;
   setMainColors: (colors: ImageColors) => void;
   setPreviousMainColors: (colors: ImageColors) => void;
 }
 
-export const GradientContext = createContext({});
+export const GradientContext = createContext({} as ContextProps);
 
 export const GradientProvider = ({children}: any) => {
   const [colors, setColors] = useState<ImageColors>({
@@ -29,8 +29,8 @@ export const GradientProvider = ({children}: any) => {
   const setMainColors = (colors: ImageColors) => {
     setColors(colors);
   };
-  const setPreviousMainColors = (colors: ImageColors) => {
-    setPreviousColors(colors);
+  const setPreviousMainColors = (previousColors: ImageColors) => {
+    setPreviousColors(previousColors);
   };
 
   return (
