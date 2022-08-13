@@ -1,4 +1,3 @@
-import {useNavigation} from '@react-navigation/core';
 import React, {useContext, useEffect} from 'react';
 import {Text, View, Button, ActivityIndicator, ScrollView} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
